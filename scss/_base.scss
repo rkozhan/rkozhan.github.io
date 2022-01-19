@@ -1,0 +1,66 @@
+html {
+	font-size: 62.5%;
+}
+html,
+body {
+	height: 100%;
+	line-height: 1.2;
+	background-color: $bodyBG;
+	color: $bodyColor;
+	font-family: $bodyFF;
+}
+body {
+	font-size: $bodyFZ;
+	&._lock {
+		overflow: hidden;
+	}
+}
+// ----------------------------------------------------------------------------
+.wrapper {
+	min-height: 100%;
+	//overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+._container,
+.container {
+	min-width: #{$minWidth}px;
+	width: 100%;
+	max-width: #{$maxWidth}px;
+	margin: 0 auto;
+	//box-sizing: content-box;
+}
+._container {
+	//@include adaptive-zero-value("padding", 30, 5, 1);
+	padding: 0 #{$maxPadding}px;
+	@media (max-width: 1200px) {
+		@include value-adaptive("padding", $maxPadding, $minPadding, 0); //свойство, максимум, минимум
+	}
+}
+
+.page__section {
+	@include adaptive("font-size", 24, 16);
+}
+
+//-----------------------------------------------------IBG
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		object-fit: cover;
+	}
+}
+
+//------------------------------
+
+// --------------------------------------------------------HEADER
+$headerHeight: 70px;
+
+.footer {
+	background-color: $footerBG;
+}

@@ -1,0 +1,92 @@
+//-----------------------------------------------
+$burgerSize: 30px;
+$burgerLineHeight: 3px;
+.header {
+	@media (max-width: $mobileSize) {
+		.menu__icon {
+			z-index: 5;
+			display: block;
+			cursor: pointer;
+
+			span {
+				display: block;
+				z-index: 1;
+				position: relative;
+				&::before,
+				&::after {
+					position: absolute;
+					content: "";
+				}
+				&::before {
+					top: -($burgerSize/3);
+				}
+				&::after {
+					bottom: -($burgerSize/3);
+				}
+			}
+			span,
+			span::before,
+			span::after {
+				background-color: #fff;
+				height: $burgerLineHeight;
+				width: $burgerSize;
+				transition: all 0.3s ease 0s;
+			}
+			&._active {
+				span {
+					background-color: transparent;
+					&::before {
+						top: 0%;
+						transform: rotate(-45deg);
+					}
+					&::after {
+						bottom: 0%;
+						transform: rotate(45deg);
+					}
+				}
+			}
+		}
+
+		.menu__body {
+			position: fixed;
+			overflow: scroll;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding-top: $headerHeight; //-------------------------------------------!!!!!!!!!!!!
+			//height: 100%;
+			background-color: $bodyBG;
+			#{$menuDirection}: -100%;
+			opacity: 0;
+			transition: #{$menuDirection} 0.3s ease 0s, opacity 0s 0.3s;
+			&:before {
+				content: "";
+				position: fixed;
+				width: 100%;
+				top: 0;
+				left: 0;
+				height: $headerHeight;
+				background-color: $headerBG;
+				z-index: 2;
+			}
+			&._active {
+				opacity: 1;
+				#{$menuDirection}: 0;
+				transition: #{$menuDirection} 0.3s ease 0s;
+			}
+		}
+	}
+
+	//----------------------------------------------
+	@media (min-width: $desktopSize) {
+		.menu__icon {
+			display: none;
+		} // Скрываем иконку-бургер
+
+		.menu__list {
+			display: flex;
+		}
+
+		//--------------------------------------------------------SUB-MENU
+	}
+}

@@ -1,0 +1,42 @@
+//----------------------------------------COLORS
+//----------------------------BRENDS
+$colorFacebook: #3b5998;
+$colorTwitter: 00acee;
+$colorTelegram: #0088cc;
+$colorSkype: #00aff0;
+$colorLinkedin: #0e76a8;
+$colorGooglePlus: #db4a39;
+$colorGooglePlus: #db4a39;
+$colorYuotube: #c4302b;
+$colorFlickr: #ff0084;
+$colorInstagram: #c13584;
+$colorInstagram: #1ab7ea;
+//----------------------------------
+$colorOrange: orange;
+$colorBlue: blue;
+$colorDark: #333;
+$colorLight: #ccc;
+$fontDarkColor: $colorDark;
+$fontLightColor: $colorLight;
+//----------------------------------------BODY
+$desktopSize: 769px;
+$mobileSize: 768px;
+
+$bodyBG: #000;
+$bodyColor: $colorLight;
+$bodyFZ: 1.6rem;
+$bodyFF: "Roboto Mono", monospace;
+
+$maxWidth: 1200;
+$minWidth: 320;
+
+$maxPadding: 50;
+$minPadding: 15;
+//----------------------------------------HEADER
+$headerBG: $bodyBG;
+//---------------------------------BURGER
+$burgerSize: 30px;
+$burgerLineHeight: 3px;
+$menuDirection: top;
+//----------------------------------------FOOTER
+$footerBG: $colorOrange;

@@ -1,0 +1,156 @@
+._preload {
+	background-color: #00000055;
+	transition: opacity 0.5s ease 3s;
+}
+
+._enter {
+	._preload {
+		opacity: 0;
+	}
+}
+
+.preload {
+	position: absolute;
+	z-index: 1;
+	top: -10vh;
+	left: -10vw;
+	width: 120vw;
+	height: 120vh;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 25vw 25vw 25vw 25vw 25vw;
+	grid-template-rows: 25vh 25vh 25vh 25vh 25vh;
+	transform: scale(5);
+	transition: transform 1.5s ease 0s;
+	pointer-events: none;
+}
+
+._loaded .preload {
+	transform: scale(1);
+}
+
+.preload__loading {
+	display: none;
+	animation: none;
+}
+
+$preload-border: #ffffff10;
+.preload__block {
+	overflow: visible;
+	&:nth-child(even) {
+		border: 0.5vh solid rgba(0, 255, 255, 0.01);
+		border-top-color: rgba(0, 255, 255, 0.03);
+		border-left-color: rgba(0, 255, 255, 0.02);
+		border-right-color: rgba(0, 255, 255, 0.02);
+		backdrop-filter: grayscale(1) brightness(500%); // blur(3px);---------------------------------
+	}
+}
+._loaded .preload__button {
+	transform: scaleY(1);
+}
+.preload__button {
+	transform: scaleY(0);
+	height: 5vh;
+	transition: transform 0.7s ease 1s, color 0.3s cubic-bezier(0.3, 1.94, 0, -0.86),
+		background-color 0.3s cubic-bezier(0.3, 1.94, 0, -0.86);
+	z-index: 10000;
+	position: fixed;
+	top: 90vh;
+	left: 80vw;
+	min-width: 15vw;
+	line-height: 5vh;
+	font-size: 3vh;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 700;
+	//color: #ccc;
+	color: #000;
+	background-color: rgba(0, 255, 255, 0.03);
+	cursor: pointer;
+	pointer-events: all;
+	&::after,
+	&::before {
+		display: block;
+		cursor: pointer;
+		pointer-events: none;
+		border: 2px solid rgba(0, 255, 255, 0.03);
+		transition: margin 0.6s ease, height 0.6s ease, width 0.6s ease, border 0.2s ease;
+		content: "";
+		position: fixed;
+	}
+	&::after {
+		width: 10000px;
+		margin-left: -5000px;
+		margin-top: -20vh;
+		height: 25vh;
+	}
+
+	&::before {
+		height: 10000px;
+		margin-top: -5000px;
+		margin-left: -5vw;
+		width: 25vw;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: rgba(0, 255, 255, 0.2);
+			color: rgb(0, 255, 255);
+			text-shadow: 0px 0px 16px rgba(0, 255, 255, 1);
+			&::after,
+			&::before {
+				border: 0.5px solid rgba(0, 255, 255, 0.3);
+			}
+			&::after {
+				margin-top: -5vh;
+				height: 5vh;
+			}
+			&::before {
+				margin-left: 0;
+				width: 15vw;
+			}
+		}
+	}
+}
+
+.matrix {
+	//pointer-events: none;
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #00000000;
+	cursor: url("/img/crosshair-cur.cur"), crosshair;
+	&__star {
+		width: 1.5em;
+		height: 1.5em;
+		text-align: center;
+		line-height: 1.5em;
+		box-sizing: content-box;
+		user-select: none;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: scale(0);
+		//animation: matrix-star ease-in infinite 3s;
+		transition: top 3s cubic-bezier(0.58, 0.18, 1, 0.24), left 3s cubic-bezier(0.58, 0.18, 1, 0.24),
+			transform 3s cubic-bezier(0.76, 0.04, 0.96, 0.24);
+		&:hover {
+			outline: 5px dashed rgba(0, 255, 255, 0.1);
+		}
+	}
+}
+
+.wrapper {
+	transform: scale(0) rotate3d(1.2, 1, 1.5, 140deg);
+
+	transition: transform 3s linear;
+}
+
+body._enter .wrapper {
+	transition: 2s cubic-bezier(0.46, 0.06, 0.66, 0.91);
+	transform: scale(1) rotate3d(0, 0, 0, 0);
+}
