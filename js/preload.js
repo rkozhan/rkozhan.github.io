@@ -64,11 +64,11 @@ window.onload = function () {
 	let intervalID = setInterval(makeStar, getR(50, 100));
 	//------------------------------------------------------------------------audio
 	const audio = {
-		enter: new Audio("/sounds/hover.mp3"),
-		//shot: new Audio("/sounds/shot.mp3"),
-		hit: new Audio("/sounds/hit.mp3"),
-		smash: new Audio("/sounds/smash.mp3"),
-		//locked: new Audio("/sounds/locked4.mp3"),
+		enter: new Audio("sounds/hover.mp3"),
+		//shot: new Audio("sounds/shot.mp3"),
+		hit: new Audio("sounds/hit.mp3"),
+		smash: new Audio("sounds/smash.mp3"),
+		//locked: new Audio("sounds/locked4.mp3"),
 	}
 
 	Object.values(audio).forEach(sound => {
@@ -114,7 +114,7 @@ window.onload = function () {
 	//---------------------------------------------------------target targeted
 
 	function showTarget(target) {
-		const audio = new Audio("/sounds/locked4.mp3");
+		const audio = new Audio("sounds/locked4.mp3");
 		audio.play();
 		//audio.locked.play();
 		hitCount.style.opacity = 1;
@@ -141,7 +141,7 @@ window.onload = function () {
 			laserShot(e.clientX, e.clientY);
 			if (!e.target.closest('.matrix__star')) {
 				//audio.shot.play();
-				const audio = new Audio("/sounds/shot.mp3");
+				const audio = new Audio("sounds/shot.mp3");
 				audio.volume = 0.1;
 				audio.play();
 			}
@@ -149,8 +149,8 @@ window.onload = function () {
 
 				hitCountArray.push(`<span style="color: ${e.target.style.color}">${e.target.innerText}</span>`);
 				showHitTargets(hitCountArray);
-				const audio = new Audio("/sounds/smash.mp3");
-				const audio2 = new Audio("/sounds/shot.mp3");
+				const audio = new Audio("sounds/smash.mp3");
+				const audio2 = new Audio("sounds/shot.mp3");
 				audio2.play();
 				audio.play();
 				//audio.hit.play();
